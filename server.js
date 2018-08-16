@@ -8,7 +8,7 @@ app.get('/api/books', function (req, res) {
        console.log( "Get all books" );
 
        let books = JSON.parse(data);
-       res.json( books );
+       res.status(200).json( books );
    });
 })
 
@@ -23,7 +23,7 @@ app.get('/api/books:id', function (req, res) {
        }
 
        console.log( "Get book with id: " + req.params.id.slice(1, this.length) );
-       res.json( targetBook );
+       res.status(200).json( targetBook );
     });
  })
 
@@ -32,6 +32,6 @@ let server = app.listen(8080, function () {
   let host = server.address().address
   let port = server.address().port
 
-  console.log("Example app listening at http://%s:%s", host, port)
+  console.log("App listening at http://%s:%s", host, port)
 
 })
