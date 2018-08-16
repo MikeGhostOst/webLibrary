@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/MikeGhostOst/webLibrary/issues"
   },
-  "homepage": "https://github.com/MikeGhostOst/webLibrary#readme"
+  "homepage": "https://github.com/MikeGhostOst/webLibrary#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }
