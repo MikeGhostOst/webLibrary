@@ -1,28 +1,34 @@
-var express = require('express');
-var app = express();
-var fs = require("fs");
+let express = require('express');
+let app = express();
+let fs = require("fs");
 
-app.get('/listUsers', function (req, res) {
-   fs.readFile( __dirname + "/" + "users.json", 'utf8', function (err, data) {
+// get auery for all books
+app.get('/api/books', function (req, res) {
+   fs.readFile( __dirname + "/" + "books.json", 'utf8', function (err, data) {
        console.log( data );
        res.end( data );
    });
 })
 
-app.get('/:id', function (req, res) {
-    // First read existing users.
-    fs.readFile( __dirname + "/" + "users.json", 'utf8', function (err, data) {
-       var users = JSON.parse( data );
-       var user = users["user" + req.params.id] 
-       console.log( user );
-       res.end( JSON.stringify(user));
+// get query for book with specific id
+app.get('/api/books:id', function (req, res) {
+    fs.readFile( __dirname + "/" + "books.json", 'utf8', function (err, data) {
+       let books = JSON.parse( data );
+       
+       let targetBook = null;
+       for (let book of books) {
+        if (book.id == req.params.id[1]) targetBook = book; 
+       }
+
+       console.log( targetBook );
+       res.end( JSON.stringify(targetBook));
     });
  })
 
-var server = app.listen(8081, function () {
+let server = app.listen(8080, function () {
 
-  var host = server.address().address
-  var port = server.address().port
+  let host = server.address().address
+  let port = server.address().port
 
   console.log("Example app listening at http://%s:%s", host, port)
 
