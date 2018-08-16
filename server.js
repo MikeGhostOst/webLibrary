@@ -5,8 +5,10 @@ let fs = require("fs");
 // get auery for all books
 app.get('/api/books', function (req, res) {
    fs.readFile( __dirname + "/" + "books.json", 'utf8', function (err, data) {
-       console.log( data );
-       res.end( data );
+       console.log( "Get all books" );
+
+       let books = JSON.parse(data);
+       res.json( books );
    });
 })
 
@@ -17,11 +19,11 @@ app.get('/api/books:id', function (req, res) {
        
        let targetBook = null;
        for (let book of books) {
-        if (book.id == req.params.id[1]) targetBook = book; 
+        if (book.id == req.params.id.slice(1, this.length)) targetBook = book; 
        }
 
-       console.log( targetBook );
-       res.end( JSON.stringify(targetBook));
+       console.log( "Get book with id: " + req.params.id.slice(1, this.length) );
+       res.json( targetBook );
     });
  })
 
