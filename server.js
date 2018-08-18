@@ -1,3 +1,5 @@
+"use strict";
+
 let express = require('express');
 let app = express();
 let fs = require("fs");
@@ -8,9 +10,13 @@ app.get('/api/books', function (req, res) {
        console.log( "Get all books" );
 
        let books = JSON.parse(data);
-       res.status(200).json( books );
+       res.status(500).json( books );
    });
 })
+
+app.get('/', function (req, res) {
+    res.sendFile(__dirname + '/index.html');
+});
 
 // get query for book with specific id
 app.get('/api/books:id', function (req, res) {
