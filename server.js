@@ -10,7 +10,7 @@ app.get('/api/books', function (req, res) {
        console.log( "Get all books" );
 
        let books = JSON.parse(data);
-       res.status(500).json( books );
+       res.status(200).json( books );
    });
 })
 
