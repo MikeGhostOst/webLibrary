@@ -4,6 +4,12 @@ let express = require('express');
 let app = express();
 let fs = require("fs");
 
+// get index.html
+app.get('/', function (req, res) {
+    console.log("Get index.html");
+    res.sendFile(__dirname + '/index.html');
+});
+
 // get auery for all books
 app.get('/api/books', function (req, res) {
    fs.readFile( __dirname + "/" + "books.json", 'utf8', function (err, data) {
@@ -13,10 +19,6 @@ app.get('/api/books', function (req, res) {
        res.status(200).json( books );
    });
 })
-
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/index.html');
-});
 
 // get query for book with specific id
 app.get('/api/books:id', function (req, res) {
