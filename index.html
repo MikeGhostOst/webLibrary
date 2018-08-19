@@ -27,49 +27,19 @@
                 this.state = {
                     books: []
                 };
-
             }
 
             componentDidMount() {
-                axios.get("http://localhost:8080/api/books")
-                    .then(res => {
-                        this.setState({ books: res.data });
-                    });
+
+                let getId = () => {if (this.props.id) return ":" + this.props.id; return ""};
+
+                axios.get("http://localhost:8080/api/books" + getId())
+                .then(res => {
+                    this.setState({ books: res.data });
+                });
             }
 
             render() {
-
-                if (this.props.id) {
-                    const targetId = this.props.id;
-                    var targetBook = this.state.books.find(elem => elem.id == targetId);
-                    console.log(targetBook);
-                    
-                    let arr = [];
-
-                    for (let something in targetBook) arr.push(targetBook[something]);
-
-                    return (
-                        <div>
-                            <table>
-                            <tr>
-                                <th>id</th>
-                                <th>Title</th> 
-                                <th>Description</th>
-                                <th>Author</th>
-                            </tr>
-                            
-                            <tr>
-                                <td>{arr[0]}</td>
-                                <td>{arr[1]}</td>
-                                <td>{arr[2]}</td>
-                                <td>{arr[3]}</td>
-                            </tr>
-                                                          
-                            </table>
-                        </div>
-                    );
-                };
-
                 return (
                     <div>
                         <table>
@@ -79,8 +49,7 @@
                                 <th>Description</th>
                                 <th>Author</th>
                             </tr>
-                            
-                            {this.state.books.map(book =>
+                              {this.state.books.map(book =>
                                     (<tr>
                                         <td>{book.id}</td>
                                         <td>{book.title}</td>
@@ -104,7 +73,7 @@
                 return (
                     <div>
                         <h1>Some text</h1>
-                        <BookTable id="3" />
+                        <BookTable id="2" />
                     </div>
                 );
             }

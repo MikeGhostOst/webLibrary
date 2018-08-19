@@ -25,12 +25,14 @@ app.get('/api/books:id', function (req, res) {
     fs.readFile( __dirname + "/" + "books.json", 'utf8', function (err, data) {
        let books = JSON.parse( data );
        
-       let targetBook = null;
+       let targetBook = [];
+       let id = req.params.id.slice(1, req.params.id.length);
+       
        for (let book of books) {
-        if (book.id == req.params.id.slice(1, this.length)) targetBook = book; 
+        if (book.id == String(id)) targetBook.push(book); 
        }
-
-       console.log( "Get book with id: " + req.params.id.slice(1, this.length) );
+       
+       console.log( "Get book with id: " + id);
        res.status(200).json( targetBook );
     });
  })
