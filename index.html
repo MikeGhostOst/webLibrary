@@ -21,19 +21,6 @@
     <script type="text/babel">
         "use strict";
         
-        // function getBooksObject() {
-        //     let xhttp = new XMLHttpRequest();
-
-        //     xhttp.onreadystatechange = function() {
-        //         if (this.readyState == 4 && this.status == 200) {
-        //             let books = JSON.parse( xhttp.responseText );
-
-        //         }
-        //     };
-        //     xhttp.open("GET", "http://localhost:8080/api/books", true);
-        //     xhttp.send();
-        // }
-        
         class BookTable extends React.Component {
             constructor(props) {
                 super(props);
@@ -51,6 +38,38 @@
             }
 
             render() {
+
+                if (this.props.id) {
+                    const targetId = this.props.id;
+                    var targetBook = this.state.books.find(elem => elem.id == targetId);
+                    console.log(targetBook);
+                    
+                    let arr = [];
+
+                    for (let something in targetBook) arr.push(targetBook[something]);
+
+                    return (
+                        <div>
+                            <table>
+                            <tr>
+                                <th>id</th>
+                                <th>Title</th> 
+                                <th>Description</th>
+                                <th>Author</th>
+                            </tr>
+                            
+                            <tr>
+                                <td>{arr[0]}</td>
+                                <td>{arr[1]}</td>
+                                <td>{arr[2]}</td>
+                                <td>{arr[3]}</td>
+                            </tr>
+                                                          
+                            </table>
+                        </div>
+                    );
+                };
+
                 return (
                     <div>
                         <table>
@@ -85,7 +104,7 @@
                 return (
                     <div>
                         <h1>Some text</h1>
-                        <BookTable id="2" />
+                        <BookTable id="3" />
                     </div>
                 );
             }
