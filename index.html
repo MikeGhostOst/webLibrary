@@ -28,15 +28,22 @@
                     books: []
                 };
             }
-
-            componentDidMount() {
-
+            
+            update() {
                 let getId = () => {if (this.props.id) return ":" + this.props.id; return ""};
 
                 axios.get("http://localhost:8080/api/books" + getId())
                 .then(res => {
                     this.setState({ books: res.data });
                 });
+            }
+
+            componentDidMount() {
+
+                setInterval(
+                    () => this.update(),
+                    100
+                );  
             }
 
             render() {
@@ -63,6 +70,32 @@
             }
         }
         
+        class SearchForm extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {value: ''};
+
+                this.handleChange = this.handleChange.bind(this);
+            }
+
+            handleChange(event) {
+                this.setState({value: event.target.value});
+            }
+            
+            render() {
+                return (
+                    <div>
+                        <br />
+                        <form>
+                            Search:
+                            <input type="text" name="firstname" onChange={this.handleChange}/>
+                        </form>
+                        <br />
+                        <BookTable id={this.state.value} />
+                    </div>
+                );
+            }
+        }
 
         class App extends React.Component {
             constructor(props) {
@@ -73,7 +106,7 @@
                 return (
                     <div>
                         <h1>Some text</h1>
-                        <BookTable id="2" />
+                        <SearchForm />
                     </div>
                 );
             }
