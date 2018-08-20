@@ -28,12 +28,23 @@ app.get('/api/books:id', function (req, res) {
        let targetBook = [];
        let id = req.params.id.slice(1, req.params.id.length);
        
+       let bookFound = false;
+
        for (let book of books) {
-        if (book.id == String(id)) targetBook.push(book); 
+        if (book.id == String(id)) {
+            targetBook.push(book);
+            bookFound = true;
+        } 
        }
        
-       console.log( "Get book with id: " + id);
-       res.status(200).json( targetBook );
+       if (bookFound) {
+            console.log( "Get book with id: " + id);
+            res.status(200).json( targetBook );
+       } else {
+            console.log( "Book with id: " + id + "doesn't exist");
+            res.status(200).json( null );
+       }
+       
     });
  })
 
