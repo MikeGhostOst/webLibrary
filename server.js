@@ -41,7 +41,7 @@ app.get('/api/books:id', function (req, res) {
             console.log( "Get book with id: " + id);
             res.status(200).json( targetBook );
        } else {
-            console.log( "Book with id: " + id + "doesn't exist");
+            console.log( "Book with id: " + id + " doesn't exist");
             res.status(200).json( null );
        }
        
