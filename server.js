@@ -31,7 +31,7 @@ app.get('/api/books:id', function (req, res) {
        let bookFound = false;
 
        for (let book of books) {
-        if (book.id == String(id)) {
+        if (String(book.id) == id) {
             targetBook.push(book);
             bookFound = true;
         } 
@@ -46,6 +46,11 @@ app.get('/api/books:id', function (req, res) {
        }
        
     });
+ })
+
+ // get query for stylesheet
+ app.get('/css/style.css', function (req, res) {
+    res.sendFile( __dirname + "/css/style.css");
  })
 
 let server = app.listen(8080, function () {
