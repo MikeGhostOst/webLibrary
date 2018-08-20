@@ -1,9 +1,56 @@
-#header {
-    color: blue;
-    float: right;
+* {
+    box-sizing: border-box;
+}
+
+html {
+    overflow: -moz-scrollbars-vertical; 
+    overflow-y: scroll;
 }
 
 body {
-    
-    float: center;
+    font-family: Verdana;
+    padding: 10px;
+    background: #f1f1f1;
+}
+
+#header {
+    font-family: Arial;
+    background-color: #4CAF50;
+    padding: 2px;
+}
+
+#header p {
+    text-align: center;
+    color: white;
+    font-family: sans-serif;
+    font-size: 2.5em;
+}
+
+ #searchForm {
+    font-family: Arial;
+    background-color: #4CAF50;
+    color: white;
+    max-width: 290px;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+#bookTable table {
+    border-collapse: collapse;
+}
+
+#bookTable th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#bookTable th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid rgb(207, 207, 207);
+}
+
+#noResult {
+    text-align: center;
+    font-size: 1em;
 }

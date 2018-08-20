@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Web library</title>
+    <title>web library</title>
 
     <!-- load react-->
     <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
@@ -58,7 +58,7 @@
                 if (this.state.books === null) {
                     return (
                         <div id="noResult">
-                            <p>There are no such book.</p>
+                            <p>There is no such book.</p>
                         </div>
                     );
                 }
@@ -101,7 +101,7 @@
                 return (
                     <div>
                         <form id="searchForm">
-                            Search:
+                            Search by id:
                             <input type="text" name="firstname" onChange={this.handleChange}/>
                         </form>
                         <br />
@@ -114,7 +114,7 @@
         function Header(props) {
             return (
                 <div id="header">
-                    Something
+                    <p>web library</p>
                 </div>
             );
         }
