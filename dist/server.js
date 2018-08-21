@@ -1,4 +1,4 @@
-// "use strict";
+"use strict";
 
 let express = require('express');
 let app = express();
@@ -10,7 +10,7 @@ app.get('/', function (req, res) {
     res.sendFile(__dirname + '/index.html');
 });
 
-// get auery for all books
+// get query for all books
 app.get('/api/books', function (req, res) {
    fs.readFile( __dirname + "/" + "books.json", 'utf8', function (err, data) {
        console.log( "Get all books" );
@@ -48,10 +48,11 @@ app.get('/api/books:id', function (req, res) {
     });
  })
 
-//  // get query for stylesheet
-//  app.get('/css/style.css', function (req, res) {
-//     res.sendFile( __dirname + "/css/style.css");
-//  })
+// get main.js
+app.get('/main.js', function (req, res) {
+    console.log("Get main.js");
+    res.sendFile(__dirname + '/main.js');
+});
 
 let server = app.listen(8080, function () {
 
