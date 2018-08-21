@@ -1,4 +1,4 @@
-"use strict";
+// "use strict";
 
 let express = require('express');
 let app = express();
@@ -48,10 +48,10 @@ app.get('/api/books:id', function (req, res) {
     });
  })
 
- // get query for stylesheet
- app.get('/css/style.css', function (req, res) {
-    res.sendFile( __dirname + "/css/style.css");
- })
+//  // get query for stylesheet
+//  app.get('/css/style.css', function (req, res) {
+//     res.sendFile( __dirname + "/css/style.css");
+//  })
 
 let server = app.listen(8080, function () {
 
