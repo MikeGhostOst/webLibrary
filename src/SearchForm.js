@@ -18,7 +18,7 @@ export default class SearchForm extends React.Component {
             <div>
                 <form id="searchForm">
                     Search by id:
-                    <input type="text" name="firstname" onChange={this.handleChange}/>
+                    <input type="text" onChange={this.handleChange}/>
                 </form>
                 <br />
                 <BookTable id={this.state.value} />
